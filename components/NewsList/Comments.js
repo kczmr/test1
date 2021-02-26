@@ -1,6 +1,6 @@
 import React from 'react';
 import {ActivityIndicator} from 'react-native';
-import * as S from './styles/NewsDetailsStyles';
+import * as S from '../styles/NewsDetailsStyles';
 
 const Comments = ({loading, comments}) => {
   return (

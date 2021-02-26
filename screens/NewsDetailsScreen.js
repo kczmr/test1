@@ -1,16 +1,15 @@
 import React, {useEffect} from 'react';
-import {ScrollView, View} from 'react-native';
+import {useSelector} from 'react-redux';
+import {ScrollView} from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import {Container} from '../components/styles/AppStyles';
 import useApi, {API_METHODS} from '../hooks/useApi';
 import * as S from '../components/styles/NewsDetailsStyles';
+import CurrentPost from '../components/NewsList/CurrentPost';
+import CommentFrom from '../components/NewsList/CommentForm';
+import Comments from '../components/NewsList/Comments';
 
-import CurrentPost from '../components/CurrentPost';
-import CommentFrom from '../components/CommentForm';
-import Comments from '../components/Comments';
-import {useSelector} from 'react-redux';
-
-const CurrentPostScreen = ({navigation, route}) => {
+const NewsDetailsScreen = ({navigation, route}) => {
   const [loading, error, getComments] = useApi(API_METHODS.GET_COMMENTS);
   const comments = useSelector((state) => state.Posts.comments);
   const postId = route.params.postId;
@@ -26,7 +25,7 @@ const CurrentPostScreen = ({navigation, route}) => {
       <S.HeaderWrapper>
         <Icon
           name="chevron-left"
-          size={20}
+          size={30}
           color="#147865"
           style={S.BackIcon}
           onPress={() => navigation.goBack()}
@@ -35,14 +34,14 @@ const CurrentPostScreen = ({navigation, route}) => {
       </S.HeaderWrapper>
 
       <ScrollView>
-        <View style={{alignItems: 'center'}}>
+        <S.CenterView>
           <CurrentPost title={title} body={body} />
           <CommentFrom comments={comments} postId={postId} />
           <Comments loading={loading} comments={comments} />
-        </View>
+        </S.CenterView>
       </ScrollView>
     </Container>
   );
 };
 
-export default CurrentPostScreen;
+export default NewsDetailsScreen;

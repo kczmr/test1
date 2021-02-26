@@ -1,25 +1,20 @@
 import React from 'react';
-import {Formik} from 'formik';
-import useApi, {API_METHODS} from '../hooks/useApi';
-import * as S from './styles/NewsDetailsStyles';
 import {ActivityIndicator} from 'react-native';
+import {Formik} from 'formik';
+import useApi, {API_METHODS} from '../../hooks/useApi';
+import {maxId} from '../../helpers/consts';
+import * as S from '../styles/NewsDetailsStyles';
 
 const CommentForm = ({comments, postId}) => {
   const [loading, error, postComment] = useApi(API_METHODS.POST_COMMENT);
 
-  const maxId =
-    Math.max.apply(
-      null,
-      comments.map((item) => item.id),
-    ) + 1;
-
   const handleSubmit = (data) => {
     const hardCoded = {
       postId: postId,
-      id: maxId,
-      title: '',
+      id: maxId(comments),
+      name: '',
       email: 'kczmr.dev@gmail.com',
-      comment: data.comment,
+      body: data.comment,
     };
     if (data.comment.length > 0) {
       postComment(hardCoded);

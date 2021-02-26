@@ -8,15 +8,15 @@ import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import CustomTabButton from '../components/CustomTabButton';
 import {tabBarStyle} from './styles/AppStyles';
 
-import NewsFeedScreen from '../screens/NewsFeedScreen';
-import CurrentPostScreen from '../screens/CurrentPostScreen';
+import NewsListScreen from '../screens/NewsListScreen';
+import NewsDetailsScreen from '../screens/NewsDetailsScreen';
 import AlbumScreen from '../screens/AlbumScreen';
 
 const Navigator = (props) => {
   const Tab = createBottomTabNavigator();
   const Stack = createStackNavigator();
 
-  const PostsStackScreen = () => {
+  const NewsStackScreen = () => {
     return (
       <Stack.Navigator
         headerMode="none"
@@ -24,8 +24,8 @@ const Navigator = (props) => {
         screenOptions={{
           cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS,
         }}>
-        <Stack.Screen name="News" component={NewsFeedScreen} />
-        <Stack.Screen name="CurrentPost" component={CurrentPostScreen} />
+        <Stack.Screen name="News" component={NewsListScreen} />
+        <Stack.Screen name="NewsDetails" component={NewsDetailsScreen} />
       </Stack.Navigator>
     );
   };
@@ -35,7 +35,7 @@ const Navigator = (props) => {
       <Tab.Navigator tabBarOptions={tabBarStyle}>
         <Tab.Screen
           name="News"
-          component={PostsStackScreen}
+          component={NewsStackScreen}
           options={{tabBarButton: CustomTabButton}}
         />
         <Tab.Screen

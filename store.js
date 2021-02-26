@@ -1,7 +1,7 @@
 import persistPlugin from '@rematch/persist';
 import {init} from '@rematch/core';
 import {compose} from 'redux';
-import getPosts from './models/posts';
+import * as models from './models';
 import AsyncStorage from '@react-native-community/async-storage';
 
 const persistConfig = {
@@ -12,7 +12,7 @@ const persistConfig = {
 
 const store = init({
   plugins: [persistPlugin(persistConfig)],
-  models: {getPosts},
+  models,
   redux: {
     devtoolOptions: compose(
       window.devToolsExtension ? window.devToolsExtension() : (f) => f,

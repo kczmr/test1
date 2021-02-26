@@ -2,6 +2,10 @@ import {View, Text, TextInput} from 'react-native';
 import {Button} from 'native-base';
 import styled from 'styled-components';
 
+export const CenterView = styled(View)`
+  align-items: center;
+`;
+
 //Header
 
 export const HeaderText = styled(Text)`
@@ -22,10 +26,12 @@ export const HeaderWrapper = styled(View)`
 export const BackIcon = {
   position: 'absolute',
   left: 30,
-  padding: 10,
-  borderWidth: 2,
+  marginTop: 5,
+  padding: 8,
+  paddingBottom: 6,
+  borderWidth: 1,
   borderColor: '#f0f2f5',
-  borderRadius: 24,
+  borderRadius: 30,
   borderStyle: 'solid',
 };
 

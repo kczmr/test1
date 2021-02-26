@@ -1,9 +1,19 @@
-import {View, ScrollView} from 'react-native';
+import {View} from 'react-native';
 import styled from 'styled-components';
 
 export const Container = styled(View)`
   flex: 1;
   background-color: #e5e5e5;
+`;
+
+export const EmptyView = styled(View)`
+  height: 15px;
+`;
+
+export const IndicatorWrapper = styled(View)`
+  flex: 1;
+  justify-content: center;
+  align-items: center;
 `;
 
 export const tabBarStyle = {
@@ -18,8 +28,4 @@ export const tabBarStyle = {
   },
   labelPosition: 'beside-icon',
   keyboardHidesTabBar: true,
-};
-
-export const EmptyView = {
-  height: 15,
 };
